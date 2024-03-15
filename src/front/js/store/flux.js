@@ -151,7 +151,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			privateRoute: () => {
                 const { apiURL, access_token } = getStore()
-                const url = `${apiURL}/api/me`
+                const url = `${apiURL}/api/private`
                 const options = {
                     method: 'GET',
                     headers: {
