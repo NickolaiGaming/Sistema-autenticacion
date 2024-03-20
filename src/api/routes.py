@@ -91,6 +91,21 @@ def register():
 @api.route('/private')
 @jwt_required()
 def private_user():
-    id = get_jwt_identity() # accedemos a la informacion guardada en el token    
+    """ id = get_jwt_identity() # accedemos a la informacion guardada en el token    
     user = User.query.get(id) # buscamos el usuario por esa informacion
-    return jsonify(user.serialize()), 200
+    return jsonify(user.serialize()), 200 """
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
+
+
+""" @api.route('/profile', methods=["GET"])
+@jwt_required()
+def profile():
+    current_user = get_jwt_identity()
+    if not current_user:
+        return jsonify({"message": "Access denied"}), 401
+    response_body = {}
+    response_body["message"] = "Perfil del usuario"
+    response_body["results"] = current_user
+    return response_body, 200 """
