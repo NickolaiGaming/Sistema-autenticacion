@@ -20,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			user: null,
 			access_token: null,
-			apiURL: 'https://laughing-spork-g445g5vpvq7q294x6-3001.app.github.dev',
+			apiURL: process.env.BACKEND_URL,
 			name: '',
 			email: '',
 			password: '',
@@ -64,6 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			handleSubmitRegister: e => {
 				e.preventDefault()
+				console.log("se llega a la funcion")
 				const { name, email, password, is_active, password_confirm, apiURL } = getStore()
 				if (password == password_confirm) {
 					const { getFetch } = getActions()
